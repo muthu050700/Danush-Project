@@ -1,0 +1,123 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+ <link rel="stylesheet" href="css1/bootstrap.min.css">
+    <link rel="stylesheet" href="css1/font-awesome.min1.css">
+  <style>
+  body {
+  background-image:url("images/istock.jpg");
+  background-size:cover;
+
+  }
+  .card {
+  background-image:url("images/2.gif");
+  background-size:cover;
+
+  }
+ 
+
+ </style>  
+
+</head>
+
+<body>
+
+
+  <div class="container">
+     <form method="post" action="sellerregservlet" enctype="multipart/form-data">
+     <div class="row">
+       <div class="card col-sm-6" style="padding-bottom:10px;background-color: #333;color:#fff;padding:10px;margin-left:30%;width: 38em;margin-bottom: 25px">
+     
+     
+     
+     
+     
+        <div class="form-group">
+          <label for="full_name" style="color:#fff;"> Name:</label>
+          <input type="text" class="form-control" id="full_name" placeholder="Full Name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email"  style="color:#fff;">Email :</label>
+          <input type="email" class="form-control" id="email" placeholder=" Email" name="email"  required>
+          
+        </div>
+        <div class="form-group">
+          <label for="text"  style="color:#fff;">Mobile :</label>
+          <input type="text" class="form-control" id="email" placeholder=" contact No " name="mobile"  required>
+          </div>
+        
+      <div class="form-group">
+          <label for="text"  style="color:#fff;">Location :</label>
+          <input type="text" class="form-control" id="email" placeholder="Your Location" name="location"  required>
+          </div>
+        <div class="form-group">
+          <label for="text"  style="color:#fff;">Address :</label>
+          <input type="text" class="form-control" id="email" placeholder=" Enter Address " name="address"  required>
+          </div>
+          
+      <div class="form-group">
+          <label for="text"  style="color:#fff;">Password :</label>
+          <input type="text" class="form-control" id="password1" placeholder="Password " name="psw"  required>
+          </div>
+          
+        <div class="form-group">
+          <label for="text"  style="color:#fff;">Re-Enter password:</label>
+          <input type="password" class="form-control" id="password2" placeholder="Confirm Password" name="cpsw"  required>
+          </div>
+          
+
+        <div class="form-group">
+          <label for="card_photo"  style="color:#fff;">ID Proof :</label>
+          <input type="file" class="form-control" placeholder="Enter password" name="ID Proof" accept="image/*" onchange="preview_image(event)" required>
+        </div>
+        <div class="form-group">
+          <label  style="color:#fff;">Picture Here!!!</label><br>
+          <img src="" id="output_image"/ height="200px">
+        </div>
+        <center><button id="submit" name="donator_register" class="btn btn-primary btn-block"  style="width:50%;" onclick="return Validate()">Submit</button></center><br>
+      </div>
+       </div>
+      </form>
+     
+    </div>
+    <hr>
+   
+  
+
+</body>
+
+<script type='text/javascript'>
+  function preview_image(event)
+  {
+    var reader = new FileReader();
+    reader.onload = function()
+    {
+      var output = document.getElementById('output_image');
+      output.src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+  }
+  </script>
+  
+       <script>
+				window.onload = function () {
+					document.getElementById("password1").onchange = validatePassword;
+					document.getElementById("password2").onchange = validatePassword;
+				}
+
+				function validatePassword() {
+					var pass2 = document.getElementById("password2").value;
+					var pass1 = document.getElementById("password1").value;
+					if (pass1 != pass2)
+						document.getElementById("password2").setCustomValidity("Password Doesn't Match");
+					else
+						document.getElementById("password2").setCustomValidity('');
+					//empty string means no validation error
+				}
+			</script>
+
+</html>
